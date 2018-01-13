@@ -1,0 +1,6 @@
+*.tex~
+*.org~
+*.tex
+.DS_Store
+.idea
+_minted*
