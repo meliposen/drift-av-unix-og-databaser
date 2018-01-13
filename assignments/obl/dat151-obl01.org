@@ -1,5 +1,5 @@
-#+INCLUDE: "preamble.org"
-#+TITLE:  Compulsory assigment 1
+#+INCLUDE: "preambleNO.org"
+#+TITLE:  Obligatorisk 1
 #+AUTHOR:  Torstein Levesund
 #+LaTeX: \thispagestyle{empty}
 \clearpage

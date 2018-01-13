@@ -11,7 +11,7 @@
 #+LaTeX_HEADER: \usepackage{forest}
 #+LaTeX_HEADER: \usepackage{amssymb}
 #+LaTeX_HEADER: \usepackage{icomma}
-#+LaTeX_HEADER: \usepackage{english}[babel]
+#+LaTeX_HEADER: \usepackage{norsk}[babel]
 #+LaTeX_HEADER: \usepackage{bbm}
 #+LaTeX_HEADER: \usepackage{mathtools}
 #+LaTeX_HEADER: \usepackage{color}
