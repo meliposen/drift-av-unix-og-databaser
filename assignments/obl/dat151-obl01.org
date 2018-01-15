@@ -1,5 +1,6 @@
 #+INCLUDE: "preambleNO.org"
-#+TITLE:  Obligatorisk 1
+#+TITLE:  Dat151 - Obligatorisk 1
 #+AUTHOR:  Torstein Levesund
+#+DATE: 22. januar 2018
 #+LaTeX: \thispagestyle{empty}
 \clearpage
