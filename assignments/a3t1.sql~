@@ -1,0 +1,61 @@
+CREATE DATABASE if not exists a2;
+USE a2;
+
+DROP TABLE IF EXISTS a;
+CREATE TABLE a (
+  FCODE VARCHAR(3) NOT NULL,
+  FNAME VARCHAR(22) NOT NULL,
+  PRIMARY KEY (FCODE)
+);
+
+CREATE TABLE if not exists b (
+  LOGNR INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  CHGTYPE VARCHAR(10), 
+  COLCHAGED VARCHAR(25),
+  OLDVALUE VARCHAR(25),
+  NEWVALUE VARCHAR(25),
+  PRIMARY KEY (LOGNR)
+);
+
+INSERT INTO a (FCODE, FNAME)
+VALUES('FIN', 'ingeniør'); 
+
+UPDATE a
+SET FNAME = 'ingeniør og sånn'
+WHERE FCODE = 'FIN';
+
+
+CREATE TABLE contacts
+( contact_id INT(11) NOT NULL AUTO_INCREMENT,
+  last_name VARCHAR(30) NOT NULL,
+  first_name VARCHAR(25),
+  birthday DATE,
+  created_date DATE,
+  created_by VARCHAR(30),
+  CONSTRAINT contacts_pk PRIMARY KEY (contact_id)
+);
+
+DELIMITER //
+
+CREATE TRIGGER contacts_before_insert
+BEFORE INSERT
+   ON contacts FOR EACH ROW
+
+BEGIN
+
+   DECLARE vUser varchar(50);
+
+   -- Find username of person performing INSERT into table
+   SELECT USER() INTO vUser;
+
+   -- Update create_date field to current system date
+   SET NEW.created_date = SYSDATE();
+
+   -- Update created_by field to the username of the person performing the INSERT
+   SET NEW.created_by = vUser;
+
+END; //
+
+DELIMITER ;
+
+
