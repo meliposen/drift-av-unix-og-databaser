@@ -1,0 +1,47 @@
+DROP DATABASE IF EXISTS a3t1;
+CREATE DATABASE a3t1;
+USE a3t1;
+
+DROP TABLE IF EXISTS a;
+CREATE TABLE a (
+  FCODE VARCHAR(3) NOT NULL,
+  FNAME VARCHAR(22) NOT NULL,
+  PRIMARY KEY (FCODE)
+);
+
+CREATE TABLE if not exists b (
+  LOGNR INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  CHGTYPE VARCHAR(10), 
+  COLCHAGED VARCHAR(25),
+  OLDVALUE VARCHAR(25),
+  NEWVALUE VARCHAR(25),
+  created_date DATE,
+  created_by VARCHAR(30),
+  PRIMARY KEY (LOGNR)
+);
+
+INSERT INTO a (FCODE, FNAME)
+VALUES('FIN', 'ingeniør'); 
+
+UPDATE a
+SET FNAME = 'ingeniør og sånn'
+WHERE FCODE = 'FIN';
+
+DELIMITER //
+
+CREATE TRIGGER ch_ch_ch_changes
+BEFORE INSERT
+   ON a FOR EACH ROW
+
+BEGIN
+
+   DECLARE vUser varchar(50);
+
+   -- Find username of person performing INSERT into table
+   SELECT USER() INTO vUser;
+
+   INSERT INTO b (created_date, created_by) VALUES(SYSDATE(),vUser);
+
+END; //
+
+DELIMITER ;
